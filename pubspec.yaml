@@ -1,0 +1,55 @@
+name: mesh_messenger
+description: Decentralized Mesh Messaging — Thesis Project
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # P2P Networking (Android only via Google Nearby Connections)
+  nearby_connections: ^4.3.0
+
+  # Cryptography — RSA + AES hybrid encryption
+  pointycastle: ^3.7.3
+
+  # SHA-256 for deriving safe Hive storage keys from long public keys
+  crypto: ^3.0.3
+
+  # Secure key storage
+  flutter_secure_storage: ^9.0.0
+
+  # Local database
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # QR code display and scanning
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^3.5.7
+
+  # Android permissions
+  permission_handler: ^11.0.0
+
+  # Foreground service — pinned to 5.x which supports API 21+ cleanly.
+  # Version 6.x introduced foregroundServiceType="connectedDevice" in its
+  # bundled manifest, which causes a PackageManager parse error on API 23-28.
+  flutter_foreground_task: ^9.2.1
+
+  # Utilities
+  uuid: ^4.0.0
+  get_it: ^7.6.0
+  cupertino_icons: ^1.0.2
+
+  geolocator: ^14.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.6
+
+flutter:
+  uses-material-design: true

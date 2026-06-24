@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ADDED xmlns:tools to enable strict override rules -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ── Bluetooth ───────────────────────────────────────────────────────── -->
+    <uses-permission android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+        
+    <!-- Forced overrides to prevent nearby_connections from crashing the merger -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+        android:minSdkVersion="31"
+        android:usesPermissionFlags="neverForLocation"
+        tools:replace="android:usesPermissionFlags,android:minSdkVersion" />
+        
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"
+        android:minSdkVersion="31"
+        tools:replace="android:minSdkVersion" />
+        
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"
+        android:minSdkVersion="31"
+        tools:replace="android:minSdkVersion" />
+
+    <!-- ── WiFi ───────────────────────────────────────────────────────────── -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:minSdkVersion="29"
+        android:maxSdkVersion="31" />
+        
+    <!-- FIX: Matched plugin's API 32 requirement and added tools:replace -->
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:minSdkVersion="32"
+        android:usesPermissionFlags="neverForLocation"
+        tools:replace="android:usesPermissionFlags,android:minSdkVersion" />
+
+    <!-- ── Network ────────────────────────────────────────────────────────── -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- ── Foreground service ─────────────────────────────────────────────── -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- ── Notifications (API 33+) ────────────────────────────────────────── -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"
+        android:minSdkVersion="33" />
+
+    <!-- ── Camera (QR scanning) ───────────────────────────────────────────── -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- 
+         Added tools:replace="android:label,android:allowBackup" 
+         Some plugins force allowBackup="true", which crashes the build if we say "false".
+         This override forces the compiler to accept our "false".
+    -->
+    <application
+        android:label="Mesh Messenger"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="false"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        tools:replace="android:label,android:allowBackup">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+        <service
+            android:name="com.pravera.flutter_foreground_task.service.ForegroundService"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.pravera.flutter_foreground_task.receiver.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.pravera.flutter_foreground_task.receiver.NotificationReceiver"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.pravera.flutter_foreground_task.notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+
+    </application>
+</manifest>
