@@ -1,3 +1,4 @@
+*.py
 *.mp4
 *.jsonl
 simulation/sumo/*.xml
