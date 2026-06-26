@@ -4,19 +4,18 @@ import os
 # CONFIGURATION
 # ==========================================
 SEARCH_DIR = "."
-OUTPUT_FILE = "mesh_messenger.txt"
+OUTPUT_FILE = "mesh_messenger_code.txt"
 MODE = "both"  # "some" | "all" | "both"
 # MODE = "some"
-# MODE = "both"
 
 # List of EXACT filenames (used in "some" mode)
 TARGET_FILES = [
     "AndroidManifest.xml",
     "pubspec.yaml",
-    "build.gradle.kts",
-    "settings.gradle.kts",
-    "proguard-rules.pro",
-    "gradle.properties",
+    # "build.gradle.kts",
+    # "settings.gradle.kts",
+    # "proguard-rules.pro",
+    # "gradle.properties",
 ]
 
 # Settings for "all" / "both" modes
