@@ -4,7 +4,7 @@ import os
 # CONFIGURATION
 # ==========================================
 SEARCH_DIR = "."
-OUTPUT_FILE = "mesh_messenger_code.txt"
+OUTPUT_FILE = "mesh_messenger_code.ccco"
 MODE = "both"  # "some" | "all" | "both"
 # MODE = "some"
 
