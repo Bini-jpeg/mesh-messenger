@@ -1,6 +1,6 @@
 # Mesh Messenger
 
-![Mesh Messenger home page](screenshot.png)
+![Mesh Messenger home page](screenshots/home_page.jpg)
 
 Mesh Messenger is a decentralized offline messaging application that I made with Flutter.
 The app works without any internet or cellular connection. It uses the Google Nearby Connections API (bluetooth/wifi Direct) to automatically find nearby devices and form a peer-to-peer mesh network. Messages are transferred (while encrypted) from device to device until they reach the target.
