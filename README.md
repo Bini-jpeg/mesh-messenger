@@ -1,9 +1,12 @@
 # Mesh Messenger
 
-![Mesh Messenger home page](screenshots/home_page.jpg)
 
 This project is for an offline and decentralized messaging app that I made with Flutter.
 The app works without any internet or cellular connection. It uses the Google Nearby Connections API (bluetooth/wifi Direct) to automatically find nearby devices and form a peer-to-peer mesh network. Messages are transferred (while encrypted) from device to device until they reach the target.
+
+<p align="center">
+  <img src="screenshots/home_page.jpg" alt="Mesh Messenger home page">
+</p>
 
 ## Current features
 * **End-to-End encryption:** RSA-2048 + AES encryption. the user's public key acts as their unique ID, like a phone number.
