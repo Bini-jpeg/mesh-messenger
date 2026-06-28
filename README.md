@@ -9,15 +9,14 @@ The app works without any internet or cellular connection. It uses the Google Ne
 </p>
 
 ## Current features
-* **End-to-End encryption:** RSA-2048 + AES encryption. the user's public key acts as their unique ID, like a phone number.
-* **Multi-hop mesh routing:** there are routing algorithms like Flooding and Gossip to pass messages
-* **Delay-tolerant network:** an outbox that caches messages and automatically forwards them as new devices are found
-* **QR code contacts:** add contacts by scanning their public QR code.
+* **Encryption:** RSA-2048 + AES encryption. the user's public key acts as their unique ID, like a phone number.
+* **Mesh routing:** there are routing algorithms like Flooding and Gossip to pass messages
+* **Delay-tolerant network:** stores messages and automatically forwards them when new devices are found
 * **Works in the background:** runs the service to keep the mesh node active even when the app is minimized.
 
 ## Future planned features
 * Admin accounts that can be used for updates/announcements etc...
-* Add more routing algorithms that might be better.
+* Add more routing algorithms that may be better
 
 ## Requirements
 * **Flutter SDK:** version 3.0.0 or higher
